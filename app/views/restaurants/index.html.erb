@@ -1,0 +1,83 @@
+<div class="main">
+
+
+<div class="head text-center py-4 my-0 mb-5">
+  <div class="heading my-4">
+    <h1>Find nearby restaurants</h1>
+  </div>
+
+  <%= search_form_for @search do |f| %>
+    <div class="form-group my-4">
+      <%= f.search_field :resto_name_or_location_cont, class: "form-control w-25 m-auto shadow", placeholder: "Search restaurants" %>
+    </div>
+  <% end %>
+
+  <h3>You have a restaurant? <%= link_to 'Register here', new_restaurant_path, class: "text-orange" %></h3>
+</div>
+<div class="list text-center my-5">
+  <h1>Our Restaurants</h1>
+  <div class="row row-cols-1 row-cols-md-4">
+    <% @restaurants.each do |restaurant| %>
+
+      <div class="col mb-4">
+        <div class="card h-100">
+          <%= image_tag restaurant.image.url, class: "card-img-top" %>
+          <div class="card-body">
+            <h5 class="card-title">
+              <%= restaurant.resto_name %>
+            </h5>
+            <strong>Location: </strong><%= restaurant.location %><br>
+            <%= link_to "Visit restaurant", restaurant_path(restaurant), class: "text-orange"%>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <%= paginate @restaurants %>
+</div>
+
+<div class="mt-5 bg-white border rounded text-center shadow-sm p-5">
+  <h4>How it works</h4>
+  <div class="card-deck mt-5">
+  <div class="small_image card border-0">
+    <%= image_tag ("step1.png"), class: "card-img-top m-auto"%>
+
+    <div class="card-body">
+      <h5 class="card-title">Find Restaurant</h5>
+      <p class="card-text">Search a restaurant you want by name or by location</p>
+    </div>
+  </div>
+  <div class="small_image card border-0">
+    <%= image_tag ("step2.png"), class: "card-img-top m-auto"%>
+
+    <div class="card-body">
+      <h5 class="card-title">Read details</h5>
+      <p class="card-text">Explore more about the restaurant you want!</p>
+    </div>
+  </div>
+  <div class="small_image card border-0">
+    <%= image_tag ("step3.png"), class: "card-img-top m-auto"%>
+
+    <div class="card-body">
+      <h5 class="card-title">Take action</h5>
+      <p class="card-text">Contact the restaurant or take a visit. Enjoy!!!</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="last bg-orange">
+  <div class="row featurette">
+    <div class="col-md-6 phone">
+      <%= image_tag ("phone.png")%>
+    </div>
+    <div class="col-md-6 d-block py-5 bottom">
+      <h1>Get the app</h1>
+      <p>If you don't have, you can find our app for mobile</p>
+      <button class="btn btn-light btn-sm text-orange">Get app</button>
+    </div>
+  </div>
+</div>
+
+
+</div>

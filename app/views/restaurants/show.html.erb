@@ -1,0 +1,85 @@
+<div class="show-image">
+  <%= image_tag @restaurant.image.url %>
+</div>
+<div class="information w-100">
+
+  <div class="row featurette">
+    <div class="col-md-6 phone pl-5">
+      <div class="info card shadow-sm m-5">
+        <div class="card-header text-orange">
+          <h4>Info</h4>
+        </div>
+        <div class="card-body">
+          <table>
+            <tbody>
+              <tr>
+                <td><strong>Resto name:</strong></td>
+                <td><%= @restaurant.resto_name %></td>
+              </tr>
+              <tr>
+                <td><strong>Location:</strong></td>
+                <td><%= @restaurant.location %></td>
+              </tr>
+              <tr>
+                <td><strong>Website:</strong></td>
+                <td><%= @restaurant.website %></td>
+              </tr>
+              <tr>
+                <td><strong>Online delivery:</strong></td>
+                <% if @restaurant.online_delivery == false %>
+                  <td>No</td>
+                <% else %>
+                  <td>Yes</td>
+                <% end %>
+              </tr>
+              <tr>
+                <td><strong>Table booking:</strong></td>
+                <% if @restaurant.table_booking == false %>
+                  <td>No</td>
+                <% else %>
+                  <td>Yes</td>
+                <% end %>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 d-block py-5">
+      <div class="menu card mr-5">
+      <div class="card-header text-orange">
+        <h4>Menu</h4>
+      </div>
+      <div class="card-body">
+        <h6 class="text-orange text-center">Breakfast</h6>
+        <% @restaurant.breakfasts.each do |breakfast| %>
+          <table class="table table-borderless table-sm">
+            <tbody>
+              <tr>
+                <td><%= breakfast.item %></td>
+                <td class="text-right"><%= breakfast.price %>Rwf</td>
+              </tr>
+            </tbody>
+          </table>
+        <% end %>
+        <hr>
+        <h6 class="text-orange text-center">Lunch</h6>
+        <% @restaurant.lunches.each do |lunch| %>
+        <table class="table table-borderless table-sm">
+          <tbody>
+            <tr>
+              <td><%= lunch.item %></td>
+              <td class="text-right"><%= lunch.price %>Rwf</td>
+            </tr>
+          </tbody>
+        </table>
+        <% end %>
+        <% if current_user.id == @restaurant.user_id %>
+          <%= link_to 'Update Menu', edit_restaurant_path(@restaurant), class: "btn bg-orange shadow-sm text-white" %>
+        <% end %>
+      </div>
+      </div>
+    </div>
+  </div>
+
+</div>

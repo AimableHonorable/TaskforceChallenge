@@ -1,0 +1,28 @@
+
+<div class="w-50 mx-auto my-5 text-center border shadow-sm rounded bg-light p-4">
+  <h2 class="text-orange" >Log in</h2>
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="form-group mx-5">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "form-control" %>
+    </div>
+
+    <div class="form-group mx-5">
+      <%= f.password_field :password, autocomplete: "current-password", placeholder: "Password", class: "form-control" %>
+    </div>
+
+    <% if devise_mapping.rememberable? %>
+      <div class="form-group text-left mx-5">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+      </div>
+    <% end %>
+
+    <div class="actions">
+      <%= f.submit "Log in", class: "btn form-control w-50 border rounded-pill shadow-sm text-white bg-orange" %>
+    </div>
+  <% end %>
+
+  <%= render "devise/shared/links" %>
+
+</div>
