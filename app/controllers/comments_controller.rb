@@ -6,7 +6,6 @@ class CommentsController < ApplicationController
 
     @restaurant = Restaurant.find(params[:restaurant_id])
     @comment = @restaurant.comments.build(comment_params)
-    @comment.user_id = current_user.id
     # Change format according to client request
     respond_to do |format|
       if @comment.save

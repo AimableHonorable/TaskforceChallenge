@@ -12,6 +12,7 @@ body{
 .bg-black{
   background-color: black;
 }
+
 .card-header .navbar a{
   color: #ff6000;
 }
@@ -44,12 +45,16 @@ img.bg{
 textarea {
   width: 80%;
 }
+.show-image{
+
+  height: 300px;
+  overflow-y: hidden;
+}
 .show-image img{
   width: 100%;
 }
 .info{
   width: 400px;
-  float: left;
 }
 .info table tr td{
   padding-bottom: 20px;
