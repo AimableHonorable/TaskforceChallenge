@@ -1,6 +1,7 @@
 class Restaurant < ApplicationRecord
   has_many :lunches, dependent: :destroy
   has_many :breakfasts, dependent: :destroy
+  has_many :comments, dependent: :destroy
   belongs_to :user, optional: true
   mount_uploader :image, ImageUploader
   paginates_per 4
