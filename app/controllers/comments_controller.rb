@@ -6,6 +6,8 @@ class CommentsController < ApplicationController
 
     @restaurant = Restaurant.find(params[:restaurant_id])
     @comment = @restaurant.comments.build(comment_params)
+    @comment.user_id = current_user.id
+    
     # Change format according to client request
     respond_to do |format|
       if @comment.save
@@ -18,6 +20,6 @@ class CommentsController < ApplicationController
   private
  # Strong Parameter
  def comment_params
-   params.require(:comment).permit(:restaurant_id, :user_id, :username :content)
+   params.require(:comment).permit(:restaurant_id, :user_id, :username, :content)
  end
 end
